@@ -1,0 +1,54 @@
+ 3rd Data Processing
+
+import pandas as pd
+ import numpy as np
+
+ data = pd.DataFrame({
+ 'age': [25, np.nan, 30, 45, np.nan],
+ 'salary': [50000, 60000, np.nan, 65000, 70000],
+ 'city': ['New York', 'Los Angeles', 'New York', 'San Francisco', np.nan],
+ 'target': [1, 0, 1, 0, 1]
+ })
+
+ print("Original Data:")
+ print(data)
+
+ print("Missing values:")
+ print(data.isnull().sum())
+
+ print("percentage of Missing values:")
+ print(data.isnull().mean() * 100)
+
+ data1 = data 
+ data1 = data1.dropna() 
+print('after removing rows')
+ print(data1)
+
+ data1 = data1.dropna(axis=1)
+ print('after removing columns')
+ print(data1)
+
+ from sklearn.impute import SimpleImputer
+ num_features = ['age', 'salary'] 
+ imputer_num = SimpleImputer(strategy='mean') 
+ data[num_features] = imputer_num.fit_transform(data[num_features])
+  data
+
+cat_features = ['city']
+ imputer_cat = SimpleImputer(strategy='most_frequent') 
+ data[cat_features] = imputer_cat.fit_transform(data[cat_features]) d
+ data
+
+ from sklearn.preprocessing import StandardScaler, LabelEncoder
+ cat_features = ['city']
+ label_encoders = {}
+ for col in cat_features:
+ le = LabelEncoder()
+ data[col] = le.fit_transform(data[col])
+ label_encoders[col] = le
+data
+
+scaler = StandardScaler() 
+ num_features = ['age','salary']
+ data[num_features] = scaler.fit_transform(data[num_features])  
+data

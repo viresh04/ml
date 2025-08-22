@@ -1,0 +1,39 @@
+1st dataset in Python
+
+ import pandas as pd
+ import matplotlib.pyplot as plt
+* from google.colab import drive
+ drive.mount('/content/drive')*
+ *import pandas as pd
+ df=pd.read_csv("/content/drive/MyDrive/Colab Notebooks/pima-indians-diabetes.csv")
+df *
+ *from sklearn.datasets import load_iris
+ iris = load_iris()# creating an instance of the data
+ df=pd.DataFrame(iris.data, columns= iris.feature_names)
+df *
+*url = 'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv'
+ df = pd.read_csv(url)
+ df *
+ * print("\nReading dataset from an CSV file:")
+ try:
+    df_CSV = pd.read_csv(r"D://Datasets//Mall_Customers.csv")  
+ print(df_CSV.head())
+ except FileNotFoundError:
+ print("File not found. Make sure the file exists.")*
+* df_CSV = pd.read_csv('/content/Salary_Data.csv')
+ df_CSV *
+ *print("Dataset Head:")
+ print(df.head()) *
+*print("\nDataset Info:")
+ print(df.info())*
+* print("\nDataset Description:")
+ print(df.describe()) *
+* print("\nDataset Shape:")
+ print(df.shape)*
+ *print("\nColumn Names:")
+ print(df.columns)*
+ *print("\nMissing Values:")
+ print(df.isnull().sum())*
+ *print("\nBasic Data Visualization:")
+ df.hist(figsize=(10, 8)) # Plot histograms for numeric columns
+ plt.show()*
